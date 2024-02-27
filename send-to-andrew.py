@@ -1,4 +1,7 @@
-
+# Author: Daniel DuBois
+# Date: 2-27-2024
+# Description: Daemon that monitors a directory for new files ending in ".jpg" and
+# calls a subprocess (detect.py), passing in the new jpeg
 
 import time
 import subprocess
@@ -13,8 +16,7 @@ class eventsHandler(FileSystemEventHandler):
             # print("New .jpg detected")
 
 if __name__ == "__main__":
-    # do stuff
-    path = "." # try with different paths
+    path = "." # path to directory to monitor for new .jpgs
     event_handler = eventsHandler()
     observer = Observer()
     observer.schedule(event_handler, path, recursive=False)
@@ -26,5 +28,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         observer.stop()
     observer.join()
-    
-
